@@ -1,24 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using System.Diagnostics;
-using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public static class Logger
 {
     [Conditional("DEV_VER")]
     public static void Log(string msg)
     {
-        UnityEngine.Debug.LogFormat("{0:yyyy-MM-dd HH:mm:ss.fff},{1}", System.DateTime.Now, msg);
+        Debug.LogFormat("{0},{1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"), msg);
     }
 
     [Conditional("DEV_VER")]
     public static void LogWarning(string msg)
     {
-        UnityEngine.Debug.LogWarningFormat("{0:yyyy-MM-dd HH:mm:ss.fff},{1}", System.DateTime.Now, msg);
+        Debug.LogWarningFormat("{0},{1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"), msg);
     }
-    
+
     public static void LogError(string msg)
     {
-        UnityEngine.Debug.LogErrorFormat("{0:yyyy-MM-dd HH:mm:ss.fff},{1}", System.DateTime.Now, msg);
+        Debug.LogErrorFormat("{0},{1}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"), msg);
     }
 }

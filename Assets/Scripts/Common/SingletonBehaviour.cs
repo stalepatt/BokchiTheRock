@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
-public class SingletonBehaviour<T> : MonoBehaviour where T: SingletonBehaviour<T>
+public class SingletonBehaviour<T> : MonoBehaviour where T : SingletonBehaviour<T>
 {
     protected bool m_IsDestroyOnLoad = false;
     protected static T m_Instance;
