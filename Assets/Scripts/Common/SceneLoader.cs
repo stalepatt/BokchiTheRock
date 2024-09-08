@@ -8,11 +8,11 @@ public enum SceneType
     InGame,
 }
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : SingletonBehaviour<SceneLoader>
 {
     public void LoadScene(SceneType sceneType)
     {
-        Logger.Log($"{sceneType} scene loading");
+        Logger.Log($"{sceneType} scene loading..");
 
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneType.ToString());
@@ -24,5 +24,13 @@ public class SceneLoader : MonoBehaviour
 
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public AsyncOperation LoadSceneAsync(SceneType sceneType)
+    {
+        Logger.Log($"{sceneType} scene async loading..");
+
+        Time.timeScale = 1f;
+        return SceneManager.LoadSceneAsync(sceneType.ToString());
     }
 }
