@@ -24,6 +24,12 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
+        UserDataManager.Instance.LoadUserData();
+        if (UserDataManager.Instance.ExistsSaveData == false)
+        {
+            UserDataManager.Instance.SetDefaultUserData();
+            UserDataManager.Instance.SaveUserData();
+        }
         StartCoroutine(LoadGameCoroutine());
     }
 
