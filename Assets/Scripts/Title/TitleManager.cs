@@ -30,15 +30,17 @@ public class TitleManager : MonoBehaviour
             UserDataManager.Instance.SetDefaultUserData();
             UserDataManager.Instance.SaveUserData();
         }
+
         StartCoroutine(LoadGameCoroutine());
     }
 
     private IEnumerator LoadGameCoroutine()
     {
         Logger.Log($"{GetType()}::LoadGameCoroutine");
+
         LogoAnimation.Play();
         yield return new WaitForSeconds(LogoAnimation.clip.length);
-        
+
         LogoAnimation.gameObject.SetActive(false);
         Title.SetActive(true);
 
